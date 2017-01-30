@@ -3,7 +3,7 @@
 
 <launch>
     <arg name="namespace" default="/"/>
-    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="world_name" default="$(find tas_car_gazebo)/worlds/tas_car.world"/>
     <arg name="cmd_timeout" default="0.5"/>
 
     <!-- Vehicle pose -->
@@ -39,12 +39,13 @@
         </node>
 
         <!--(Static) transformation for relation between laser frame and base_link frame -->
+        <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu" args="-0.28 0.0 0.15 0.0 0.0 0.0 /base_link /base_imu 40" />
         <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.28 0.0 0.18 0.0 0.0 0.0 /base_link /laser 40" />
         <node pkg="tf" type="static_transform_publisher" name="scanmatch_to_base" args="-0.28 0.0 -0.18 0.0 0.0 0.0 /scanmatcher_frame /base_link 40" />
 
         <!-- hector mapping -->
         <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
-            <param name="scan_topic" value="scan" />
+            <param name="scan_topic" value="/scan" />
             <param name="base_frame" value="base_link" />
             <param name="odom_frame" value="base_link"/>
             <param name="map_frame" value="odom"/>
