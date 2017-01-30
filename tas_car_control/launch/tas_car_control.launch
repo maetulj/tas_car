@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- tas_car_control.launch -->
+
+<launch>
+    <arg name="namespace" default="/"/>
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="cmd_timeout" default="0.5"/>
+
+    <!-- Vehicle pose -->
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.1"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <include file="$(find tas_car_description)/launch/tas_car_description.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
+    <group ns="$(arg namespace)">
+
+        <!-- Load the joint controllers. -->
+        <node name="controller_spawner" pkg="controller_manager" type="spawner"
+              args="$(find tas_car_control)/config/tas_car_joint_controller.yaml"/>
+
+        <!-- Convert joint states to TF transforms for rviz, etc -->
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
+                respawn="false" output="screen">
+            <param name="robot_description" command="$(find xacro)/xacro.py '$(find tas_car_description)/urdf/tas_car_description.urdf.xacro'" />
+            <remap from="/joint_states" to="/tas_car/joint_states" />
+        </node>
+
+        <!-- Control the steering, axle, and shock absorber joints. -->
+        <node name="ackermann_controller" pkg="tas_car_control"
+              type="ackermann_controller">
+            <param name="cmd_timeout" value="$(arg cmd_timeout)"/>
+            <rosparam file="$(find tas_car_control)/config/tas_car_ackermann_controller.yaml" command="load"/>
+        </node>
+    </group>
+</launch>

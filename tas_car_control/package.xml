@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package>
+  <name>tas_car_control</name>
+  <version>0.0.1</version>
+  <description>The tas_car_control package for driving it with the Ackermann steering.</description>
+
+  <author email="gasper.simonic@tum.de">Gasper Simonic</author>
+
+  <maintainer email="gasper.simonic@tum.de">Gasper Simonic</maintainer>
+
+  <license>TODO</license>
+
+  <!-- Dependencies. -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>ackermann_msgs</build_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>controller_manager_msgs</build_depend>
+  <build_depend>effort_controllers</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tas_car_description</build_depend>
+  <build_depend>tf</build_depend>
+
+  <run_depend>ackermann_msgs</run_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>controller_manager_msgs</run_depend>
+  <run_depend>effort_controllers</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>tas_car_description</run_depend>
+  <run_depend>tf</run_depend>
+
+</package>

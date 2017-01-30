@@ -1,0 +1,1 @@
+This folder includes all the meshes for the model. Accepted formats are .stl and .dae.

@@ -1,0 +1,28 @@
+<launch>
+    <!-- Vehicle pose -->
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.1"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <!-- Execute Gazebo launch file and load our world. -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find tas_car_gazebo)/worlds/tas_car.world" />
+        <arg name="gui" value="true" />
+    </include>
+
+    <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find tas_car_description)/urdf/tas_car_description.urdf.xacro'" />
+
+    <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="tas_car_spawn" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model tas_car
+                -x $(arg x) -y $(arg y) -z $(arg z)
+                -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"
+    />
+
+    <!-- ros_control mybot launch file -->
+    <include file="$(find tas_car_control)/launch/tas_car_control.launch" />
+</launch>

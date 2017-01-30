@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!-- 
+file: tas_car_description.launch
+
+Launch the car simulation in RViz and Gazebo.
+-->
+
+<launch>
+    <arg name="namespace" default="tas_car_platform"/>
+
+    <group ns="$(arg namespace)">
+        <!-- Get the Robot description from xacro. -->
+        <param  name="robot_description" 
+                command="$(find xacro)/xacro $(find tas_car_description)/urdf/tas_car_description.urdf.xacro"/>
+
+        <remap from="tas_car_platform/robot_description" to="robot_description"/>
+
+        <!-- Read joint positions from joint_states, then publish the vehicle's
+         state to tf. -->
+        <!-- node   name="joint_state_publisher" pkg="joint_state_publisher"
+                type="joint_state_publisher" ns="$(arg namespace)">
+            <param name="rate" value="30"/>
+            <param name="use_gui" value="true"/>
+        </node -->
+
+        <!-- Read joint positions from joint_states, then publish the vehicle's
+        state to tf. -->
+        <node   name="vehicle_state_publisher" 
+                pkg="robot_state_publisher"
+                type="robot_state_publisher">
+            <param name="publish_frequency" value="30.0"/>
+        </node>
+    </group>
+</launch>
