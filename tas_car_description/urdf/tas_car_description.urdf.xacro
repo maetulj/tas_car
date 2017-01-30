@@ -8,9 +8,9 @@
     <xacro:property name="PI"         value="3.1415926535897931" />
 
     <!-- Chassis. -->
-    <xacro:property name="chassis_length" value="0.358" />
-    <xacro:property name="chassis_width"  value="0.18" />
-    <xacro:property name="chassis_height" value="0.068" />
+    <xacro:property name="chassis_length" value="0.346" />
+    <xacro:property name="chassis_width"  value="0.17" />
+    <xacro:property name="chassis_height" value="0.095" />
     <xacro:property name="chassis_mass"   value="3" />
 
     <!-- hub_diameter and tire_diameter are the diameters of the hub and tire,
@@ -34,7 +34,7 @@
     <xacro:property name="hex_hub_dist" value="0.365"/>
     <xacro:property name="axle_length" value="0.03"/>
     <xacro:property name="wheel_travel" value="0.084"/>
-    <xacro:property name="shock_z_offset" value="0.0655"/>
+    <xacro:property name="shock_z_offset" value="0.0055"/>
 
     <!-- TODO get shock sprint constant, default used here -->
     <!-- shock_eff_limit is 2 * ((shock_stroke / 2) * shock_spring_constant) N.

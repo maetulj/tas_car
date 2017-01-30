@@ -260,7 +260,7 @@ outer_rad are the tube's inner and outer radii, respectively. -->
 
         <joint name="hokuyo_joint" type="fixed">
             <axis xyz="0 1 0" />
-            <origin xyz="${-laser_size+chassis_length/2} 0 ${laser_size+tire_radius + chassis_height/2}" rpy="0 0 0"/>
+            <origin xyz="${-laser_size+chassis_length/2} 0 ${tire_radius + 0.03}" rpy="0 0 0"/>
             <parent link="chassis"/>
             <child link="hokuyo_link"/>
         </joint>
