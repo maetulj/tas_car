@@ -12,7 +12,10 @@
 
     <author email="gasper.simonic@tum.de">Gasper Simonic</author>
 
+    <!-- Dependencies. -->
     <buildtool_depend>catkin</buildtool_depend>
+
+    <!-- Build time dependencies. -->
 
     <!-- Run time dependencies. -->
     <run_depend>gazebo_ros_control</run_depend>

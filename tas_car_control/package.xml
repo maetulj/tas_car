@@ -23,6 +23,8 @@
   <build_depend>std_msgs</build_depend>
   <build_depend>tas_car_description</build_depend>
   <build_depend>tf</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
 
   <run_depend>ackermann_msgs</run_depend>
   <run_depend>controller_manager</run_depend>
@@ -35,5 +37,9 @@
   <run_depend>std_msgs</run_depend>
   <run_depend>tas_car_description</run_depend>
   <run_depend>tf</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+
+
 
 </package>

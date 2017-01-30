@@ -87,10 +87,6 @@ outer_rad are the tube's inner and outer radii, respectively. -->
             </solid_cuboid_inertial>
         </link>
 
-        <gazebo reference="chassis">
-            <material>Gazebo/Orange</material>
-        </gazebo>
-
         <!-- Fix the chassis to the base_link. -->
         <joint name="base_link_to_chassis" type="fixed">
             <parent link="base_link"/>
@@ -287,6 +283,20 @@ outer_rad are the tube's inner and outer radii, respectively. -->
                 <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
             </inertial>
         </link>
-
     </macro>
+
+    <!-- IMU link. -->
+    <macro name="imu_link">
+        <link name="imu_link">
+            <null_inertial/>
+        </link>
+
+        <!-- Fix the imu_link to the chassis. -->
+        <joint name="imu_link_to_chassis" type="fixed">
+            <parent link="chassis"/>
+            <child link="imu_link"/>
+            <origin xyz="-0.28 0.0 0.15" rpy="0 0 0"/>
+        </joint>
+    </macro>
+
 </robot>

@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <!-- Description of the tas_car. -->
 
-<robot name="tas_car" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="tas_car" xmlns:xacro="http://www.ros.org/wiki/xacro"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
     <!-- Physical constants. -->
     <xacro:property name="degrees_45" value="0.785398163" />
     <xacro:property name="degrees_90" value="1.57079633" />
@@ -112,8 +114,16 @@
 
     <!-- Laser scanner. -->
     <xacro:hokuyo_laser />
+
+    
+    <!-- imu -->
+    <xacro:imu_link/>
   
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+    </gazebo>
+
+    <gazebo reference="chassis">
+      <material>Gazebo/Orange</material>
     </gazebo>
 </robot>

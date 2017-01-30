@@ -33,10 +33,20 @@
 				</noise>
 			</ray>
 			<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-				<topicName>/tas_car/laser/scan</topicName>
+				<topicName>/scan</topicName>
 				<frameName>hokuyo_link</frameName>
 			</plugin>
 		</sensor>
 	</gazebo>
 
+	<gazebo>
+	    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+			<alwaysOn>true</alwaysOn>
+			<bodyName>imu_link</bodyName>
+			<topicName>imu</topicName>
+			<serviceName>imu_service</serviceName>
+			<gaussianNoise>0.0</gaussianNoise>
+			<updateRate>20.0</updateRate>
+	    </plugin>
+	  </gazebo>
 </robot>

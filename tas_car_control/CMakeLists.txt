@@ -6,6 +6,7 @@ project(tas_car_control)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   ackermann_msgs
+  tas_car_description
   controller_manager
   controller_manager_msgs
   effort_controllers
@@ -13,9 +14,10 @@ find_package(catkin REQUIRED COMPONENTS
   joint_state_controller
   roscpp
   rospy
-  std_msgs
-  tas_car_description
   tf
+  geometry_msgs
+  nav_msgs
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -137,15 +139,16 @@ include_directories(
 
 ## Declare a C++ executable
 # add_executable(tas_car_control_node src/tas_car_control_node.cpp)
+add_executable(tas_car_control src/odom_publisher.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(tas_car_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(tas_car_control_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(tas_car_control
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##

@@ -18,6 +18,7 @@
 
     <!-- push robot_description to factory and spawn robot in gazebo -->
     <node name="tas_car_spawn" pkg="gazebo_ros" type="spawn_model"
+            respawn="false" output="screen"
           args="-urdf -param robot_description -model tas_car
                 -x $(arg x) -y $(arg y) -z $(arg z)
                 -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"
