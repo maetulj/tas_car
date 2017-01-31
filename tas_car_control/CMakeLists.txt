@@ -125,6 +125,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  include
 )
 
 ## Declare a C++ library
@@ -141,12 +142,24 @@ include_directories(
 # add_executable(tas_car_control_node src/tas_car_control_node.cpp)
 add_executable(tas_car_control src/odom_publisher.cpp)
 
+add_executable(tas_car_servo src/servo_proxy.cpp)
+
+add_executable(tas_car_cmd_ackermann src/cmd_vel_to_ackermann.cpp)
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(tas_car_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(tas_car_control
+  ${catkin_LIBRARIES} 
+)
+
+target_link_libraries(tas_car_servo
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(tas_car_cmd_ackermann
   ${catkin_LIBRARIES}
 )
 

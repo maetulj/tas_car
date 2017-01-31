@@ -9,7 +9,7 @@
 
     <!-- Execute Gazebo launch file and load our world. -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find tas_car_gazebo)/worlds/test.world" />
+        <arg name="world_name" value="$(find tas_car_gazebo)/worlds/tas_car.world" />
         <arg name="gui" value="true" />
     </include>
 

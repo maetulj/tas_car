@@ -38,6 +38,14 @@
             <rosparam file="$(find tas_car_control)/config/tas_car_ackermann_controller.yaml" command="load"/>
         </node>
 
+        <!-- Transform the servo commands to ackermann_cmd for driving the Gazebo simulation. -->
+        <node name="servo_to_ackermann_cmd" pkg="tas_car_control" type="tas_car_servo">
+        </node>
+
+        <!-- Transform the cmd_vel to ackermann_cmd for driving the Gazebo simulation. -->
+        <node name="tas_car_cmd_ackermann" pkg="tas_car_control" type="tas_car_cmd_ackermann">
+        </node>
+
         <!--(Static) transformation for relation between laser frame and base_link frame -->
         <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu" args="-0.28 0.0 0.15 0.0 0.0 0.0 /base_link /base_imu 40" />
         <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.28 0.0 0.18 0.0 0.0 0.0 /base_link /laser 40" />
